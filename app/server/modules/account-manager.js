@@ -2,15 +2,17 @@
 var crypto 		= require('crypto');
 var MongoDB 	= require('mongodb').Db;
 var Server 		= require('mongodb').Server;
+var MongoClient = require('mongodb').MongoClient,
 var moment 		= require('moment');
 
 var dbPort 		= 27017;
-var dbHost 		= 'localhost';
-var dbName 		= 'node-login';
+// var dbHost 		= 'localhost';
+var dbHost 		= 'dharma.mongohq.com';
+var dbName 		= 'login';
 
 /* establish the database connection */
-
-var db = new MongoDB(dbName, new Server(dbHost, dbPort, {auto_reconnect: true}), {w: 1});
+// var db = new MongoDB(dbName, new Server(dbHost, dbPort, {auto_reconnect: true}), {w: 1});
+var db = MongoClient.connect('mongodb://nodejitsu:d2dbc1a2863d3a856f0677efc7ba0588@dharma.mongohq.com:10008/nodejitsudb2476788251');
 	db.open(function(e, d){
 	if (e) {
 		console.log(e);
